@@ -50,7 +50,7 @@ def main(image, audio, video, create):
                 text_to_audio.text_to_audio(config['azure_api_key'], config['azure_region'], script, audio_path, voice="en-US-JennyNeural", style="cheerful")
 
         if image or create:
-            image_paths = generate_images.generate_images(config['openai_api_key'], topic, 5, assets_images_dir)
+            image_paths = generate_images.generate_images(config['openai_api_key'], topic, 2, assets_images_dir)
             if not image_paths:
                 tqdm.write(f"No images generated for topic: {topic}. Skipping image generation.")
 

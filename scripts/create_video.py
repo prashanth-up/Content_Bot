@@ -22,12 +22,12 @@ def split_text(script, num_parts):
 
 def create_text_clip(subtitle, img_size, duration):
     max_width = img_size[0] - 40  # Add padding
-    wrapped_text = textwrap.fill(subtitle, width=int(max_width / 10))  # Adjust wrapping width
+    wrapped_text = textwrap.fill(subtitle, width=int(max_width / 3))  # Adjust wrapping width for better horizontal fit
     
-    txt_clip = TextClip(wrapped_text, fontsize=10, color='white', method='caption').set_duration(duration)
-    txt_clip = txt_clip.on_color(size=(txt_clip.w + 20, txt_clip.h + 10), color=(0, 0, 0), pos=('center', 'center'))  # Add background
+    # Create the text clip with a black background
+    txt_clip = TextClip(wrapped_text, fontsize=10, color='white', bg_color='black', size=(img_size[0], None), method='caption').set_duration(duration)
     txt_clip = txt_clip.set_position(('center', 'bottom'))
-
+    
     return txt_clip
 
 def create_video(image_paths, audio_path, video_path, subtitles):
@@ -58,5 +58,6 @@ def create_video(image_paths, audio_path, video_path, subtitles):
     # Add audio to the video
     video = video.set_audio(audio_clip)
 
-    # Write the final video file
+    # Write the final video file with proper codecs and temporary audio file
     video.write_videofile(video_path, codec="libx264", fps=24)
+
