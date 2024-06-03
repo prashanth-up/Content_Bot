@@ -12,7 +12,8 @@ imagemagick_path = "/opt/homebrew/bin/magick"  # Update this path based on the o
 os.environ["IMAGEMAGICK_BINARY"] = imagemagick_path
 print("IMAGEMAGICK_BINARY set to:", os.environ["IMAGEMAGICK_BINARY"])
 
-from scripts import config_loader, generate_script, text_to_audio, generate_images, create_video
+from scripts import config_loader, generate_script, text_to_audio, generate_images
+from scripts.create_video import create_video  # Correctly import the create_video function
 from tqdm import tqdm
 
 def main(image, audio, video, create):
@@ -56,7 +57,7 @@ def main(image, audio, video, create):
         if video or create:
             if script and audio_path and image_paths:
                 video_path = os.path.join(topic_dir, "video.mp4")
-                create_video.create_video(image_paths, audio_path, video_path, subtitles=script)
+                create_video(image_paths, audio_path, video_path, subtitles=script)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process tasks for content generation.")

@@ -10,12 +10,24 @@ def resize_image(image_path, new_height):
     img.save(resized_image_path)
     return resized_image_path
 
+def split_text(script, num_parts):
+    words = script.split()
+    avg_len = len(words) // num_parts
+    parts = []
+    for i in range(num_parts - 1):
+        parts.append(' '.join(words[i*avg_len : (i+1)*avg_len]))
+    parts.append(' '.join(words[(num_parts-1)*avg_len:]))
+    return parts
+
 def create_video(image_paths, audio_path, video_path, subtitles):
     clips = []
-    duration_per_image = 10 / len(image_paths)  # Adjust the duration for each image
     audio_clip = AudioFileClip(audio_path)
+    video_duration = audio_clip.duration
+    duration_per_image = video_duration / len(image_paths)
+    
+    subtitle_parts = split_text(subtitles, len(image_paths))
 
-    for i, image_path in enumerate(image_paths):
+    for i, (image_path, subtitle) in enumerate(zip(image_paths, subtitle_parts)):
         # Resize the image
         resized_image_path = resize_image(image_path, 720)
         
@@ -23,7 +35,7 @@ def create_video(image_paths, audio_path, video_path, subtitles):
         img_clip = ImageClip(resized_image_path).set_duration(duration_per_image)
 
         # Create the text clip
-        txt_clip = TextClip(subtitles, fontsize=24, color='white', size=img_clip.size).set_duration(duration_per_image).set_position(('center', 'bottom'))
+        txt_clip = TextClip(subtitle, fontsize=24, color='white', size=img_clip.size).set_duration(duration_per_image).set_position(('center', 'bottom'))
 
         # Combine the image and text clips
         composite = CompositeVideoClip([img_clip, txt_clip])
