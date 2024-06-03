@@ -1,8 +1,5 @@
 {
-    "topics": [
-      "Introduction to Machine Learning",
-      "Supervised vs Unsupervised Learning",
-      "Neural Networks Explained"
-    ]
-  }
-  
+  "topics": [
+      "Introduction to Machine Learning"
+  ]
+}

@@ -1,4 +1,3 @@
-
 import json
 
 def load_config():
@@ -8,4 +7,4 @@ def load_config():
 def load_topics():
     with open('topics.json', 'r') as file:
         data = json.load(file)
-    return data['topics']
+        return data['topics']
