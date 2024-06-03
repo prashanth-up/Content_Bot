@@ -5,7 +5,7 @@ A Content Generation Bot that creates audio-visual content clips of any topic (b
 
 ## Features
 
-- Generate AI/ML topics using OpenAI GPT API
+- Generate any topic's content script using OpenAI GPT API
 - Convert generated scripts to audio using Azure TTS
 - Fetch relevant images using OpenAI DALL-E API
 - Create a video with audio, images, and subtitles
