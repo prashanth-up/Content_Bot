@@ -180,13 +180,21 @@ output_videos/
 
 ## Screenshots and Clips
 
-### Example Screenshot
+### Example Screenshots
 
-![Placeholder for Screenshot](path/to/screenshot.png)
+These are actually bad in fact, but dall-e is pure RNG 
+<p align="center">
+<img src="output_videos/Introduction_to_Machine_Learning/assets_images/image_0_resized.png" width="300">
+</p>
+<p align="center">
+<img src="output_videos/Introduction_to_Machine_Learning/assets_images/image_1_resized.png" width="300">
+</p>
+
 
 ### Example Video Clip
 
-![Placeholder for Video Clip](path/to/video_clip.mp4)
+[Video Example](https://github.com/prashanth-up/Content_Bot/blob/main/output_videos/Introduction_to_Machine_Learning/video.mp4)
+
 
 ## Troubleshooting (Don't worry, you won't need this 😎)
 
