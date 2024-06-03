@@ -1,5 +1,6 @@
 from moviepy.editor import ImageClip, concatenate_videoclips, AudioFileClip, TextClip, CompositeVideoClip
 from PIL import Image
+import textwrap
 
 def resize_image(image_path, new_height):
     img = Image.open(image_path)
@@ -19,6 +20,16 @@ def split_text(script, num_parts):
     parts.append(' '.join(words[(num_parts-1)*avg_len:]))
     return parts
 
+def create_text_clip(subtitle, img_size, duration):
+    max_width = img_size[0] - 40  # Add padding
+    wrapped_text = textwrap.fill(subtitle, width=int(max_width / 10))  # Adjust wrapping width
+    
+    txt_clip = TextClip(wrapped_text, fontsize=10, color='white', method='caption').set_duration(duration)
+    txt_clip = txt_clip.on_color(size=(txt_clip.w + 20, txt_clip.h + 10), color=(0, 0, 0), pos=('center', 'center'))  # Add background
+    txt_clip = txt_clip.set_position(('center', 'bottom'))
+
+    return txt_clip
+
 def create_video(image_paths, audio_path, video_path, subtitles):
     clips = []
     audio_clip = AudioFileClip(audio_path)
@@ -35,7 +46,7 @@ def create_video(image_paths, audio_path, video_path, subtitles):
         img_clip = ImageClip(resized_image_path).set_duration(duration_per_image)
 
         # Create the text clip
-        txt_clip = TextClip(subtitle, fontsize=24, color='white', size=img_clip.size).set_duration(duration_per_image).set_position(('center', 'bottom'))
+        txt_clip = create_text_clip(subtitle, img_clip.size, duration_per_image)
 
         # Combine the image and text clips
         composite = CompositeVideoClip([img_clip, txt_clip])
