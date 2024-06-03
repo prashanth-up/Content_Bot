@@ -1,7 +1,7 @@
 
 # Content Generation Bot
 
-A Content Generation Bot that creates audio-visual content clips of any topic (but we like to clickbait AI/ML) that can be posted on Instagram. The bot uses a lot of API's and services to create a one-minute-long clip with subtitles. Honestly, I just coudn't find a job and was considering to become an influencer at this point. 
+A Content Generation Bot that creates audio-visual content clips of any topic (but we like to clickbait AI/ML) that can be posted on Social Media. The bot uses a lot of API's and services to create a one-minute-long clip with subtitles. Honestly, I just coudn't find a job and was considering to become an influencer at this point. 
 
 ## Features
 
