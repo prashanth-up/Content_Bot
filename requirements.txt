@@ -1,0 +1,4 @@
+openai==0.10.0
+azure-cognitiveservices-speech==1.37.0
+moviepy==1.0.3
+requests==2.25.1
